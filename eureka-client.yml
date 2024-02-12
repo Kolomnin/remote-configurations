@@ -6,6 +6,8 @@ spring:
     name: eureka-client
 
 eureka:
+  instance:
+    instance-id: id
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka
