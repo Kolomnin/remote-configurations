@@ -9,6 +9,7 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
     non-secure-port: ${server.port}  # Используем порт, который был назначен
+    hostname: http://localhost:52138
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
