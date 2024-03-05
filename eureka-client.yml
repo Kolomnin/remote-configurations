@@ -10,7 +10,7 @@ eureka:
     instance-id: ${spring.application.name}:${random.uuid}
   client:
     service-url:
-      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: https://localhost:8761/eureka/
 
 logging:
   level:
