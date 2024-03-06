@@ -16,11 +16,10 @@ eureka:
 ribbon:
   eureka:
     enabled: true
-  ServerListRefreshInterval: 1000
+  ServerListRefreshInterval: 2000
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
   NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
   NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-  ServerListRefreshInterval: 2000
   # Вес для каждого инстанса. Можно настроить в зависимости от требуемого распределения.
   eureka-client:
     ZoneAffinity: false
