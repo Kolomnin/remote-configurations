@@ -22,7 +22,7 @@ ribbon:
   NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
   # Вес для каждого инстанса. Можно настроить в зависимости от требуемого распределения.
   eureka-client:
-    ZoneAffinity: false
+    ZoneAffinity: true  # Изменено значение на true для включения аффинности
     avaiableZones: 1
     CanIPPointToIP: false
     NIWSDiscoveryPingClassName: com.netflix.niws.loadbalancer.NIWSDiscoveryPing
