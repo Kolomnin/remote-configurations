@@ -10,12 +10,29 @@ eureka:
     instance-id: ${spring.application.name}:${random.uuid}
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka
 
-logging:
-  level:
-    com.netflix.eureka: OFF
-    com.netflix.discovery: OFF
-    org.springframework.web: DEBUG
-# pattern:
-# console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+# Новая конфигурация для Ribbon
+ribbon:
+  eureka:
+    enabled: true
+  ServerListRefreshInterval: 1000
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+  NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+  NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+  ServerListRefreshInterval: 2000
+  # Вес для каждого инстанса. Можно настроить в зависимости от требуемого распределения.
+  eureka-client:
+    ZoneAffinity: false
+    avaiableZones: 1
+    CanIPPointToIP: false
+    NIWSDiscoveryPingClassName: com.netflix.niws.loadbalancer.NIWSDiscoveryPing
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    ReadTimeout: 5000
+    RestClient: jersey
+    connectTimeout: 3000
+    MaxAutoRetriesNextServer: 3
+    MaxAutoRetries: 1
+    PrimeConnections: 10
+    PrimeConnectionsTimeout: 3000
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
