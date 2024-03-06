@@ -20,9 +20,8 @@ ribbon:
   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
   NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
   NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-  # Вес для каждого инстанса. Можно настроить в зависимости от требуемого распределения.
   eureka-client:
-    ZoneAffinity: true  # Изменено значение на true для включения аффинности
+    ZoneAffinity: true
     avaiableZones: 1
     CanIPPointToIP: false
     NIWSDiscoveryPingClassName: com.netflix.niws.loadbalancer.NIWSDiscoveryPing
@@ -35,3 +34,8 @@ ribbon:
     PrimeConnections: 10
     PrimeConnectionsTimeout: 3000
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+    # Настройка аффинности на основе имени хоста
+    client:
+      - eureka-client:
+          - http://localhost:52938/ # Замените на фактические IP-адреса и порты ваших инстансов
+          - http://localhost:52956/
