@@ -1,47 +1,70 @@
+spring:
+  profiles:
+    active: development
+
 server:
   port: 0
 
-spring:
-  application:
-    name: eureka-client
-
 eureka:
   instance:
-    prefer-ip-address: false
     instance-id: ${spring.application.name}:${random.uuid}
-    hostname: localhost
-    port: 60212
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-# Новая конфигурация для Ribbon
-ribbon:
-  eureka:
-    enabled: true
-  ServerListRefreshInterval: 2000
-  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
-  NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
-  NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-  eureka-client:
-    ZoneAffinity: true
-    avaiableZones: 1
-    CanIPPointToIP: false
-    NIWSDiscoveryPingClassName: com.netflix.niws.loadbalancer.NIWSDiscoveryPing
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    ReadTimeout: 5000
-    RestClient: jersey
-    connectTimeout: 3000
-    MaxAutoRetriesNextServer: 3
-    MaxAutoRetries: 1
-    PrimeConnections: 10
-    PrimeConnectionsTimeout: 3000
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
-    # Настройка аффинности на основе имени хоста
-    client:
-      - eureka-client:
-          - 10.3.18.210:52938/ # Замените на фактические IP-адреса и порты ваших инстансов
-          - 10.3.18.210:52956/
+eureka-client:
+  instances:
+    - instance-id: instance1
+      host: localhost
+      port: 60212
+    - instance-id: instance2
+      host: localhost
+      port: 60213
+
+# server:
+#   port: 0
+
+# spring:
+#   application:
+#     name: eureka-client
+
+# eureka:
+#   instance:
+#     prefer-ip-address: false
+#     instance-id: ${spring.application.name}:${random.uuid}
+#     hostname: localhost
+#     port: 60212
+#   client:
+#     service-url:
+#       defaultZone: http://localhost:8761/eureka
+
+# # Новая конфигурация для Ribbon
+# ribbon:
+#   eureka:
+#     enabled: true
+#   ServerListRefreshInterval: 2000
+#   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+#   NFLoadBalancerPingClassName: com.netflix.loadbalancer.PingUrl
+#   NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+#   eureka-client:
+#     ZoneAffinity: true
+#     avaiableZones: 1
+#     CanIPPointToIP: false
+#     NIWSDiscoveryPingClassName: com.netflix.niws.loadbalancer.NIWSDiscoveryPing
+#     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+#     ReadTimeout: 5000
+#     RestClient: jersey
+#     connectTimeout: 3000
+#     MaxAutoRetriesNextServer: 3
+#     MaxAutoRetries: 1
+#     PrimeConnections: 10
+#     PrimeConnectionsTimeout: 3000
+#     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+#     # Настройка аффинности на основе имени хоста
+#     client:
+#       - eureka-client:
+#           - 10.3.18.210:52938/ # Замените на фактические IP-адреса и порты ваших инстансов
+#           - 10.3.18.210:52956/
 
 #  server:
 #   port: 0
