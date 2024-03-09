@@ -63,5 +63,5 @@ logging:
     com.netflix.eureka: OFF
     com.netflix.discovery: OFF
     org.springframework.web: DEBUG
-# pattern:
-# console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+    pattern:
+      console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
