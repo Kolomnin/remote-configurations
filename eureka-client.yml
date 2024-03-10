@@ -1,30 +1,40 @@
 
+eureka:
+  instance:
+    preferIpAddress: true
+    securePortEnabled: false
+    nonSecurePort: 8080
+
 server:
   port: 8082  
+
 spring:
   application:
     name: eureka-client
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+
+cloud:
+  gateway:
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
 
 eureka:
-  instance:
-    instance-id: ${spring.application.name}:8082  # Первый инстанс на порту 8082
-    prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+  instance:
+    instance-id: ${spring.application.name}:8082  # Первый инстанс на порту 8082
+    prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
+
 instance1:
   instance-id: ${spring.application.name}:8083  # Второй инстанс на порту 8083
   prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
+
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/    
+      defaultZone: http://localhost:8761/eureka/
 
 logging:
   level:
