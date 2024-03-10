@@ -3,7 +3,7 @@
   
 
 server:
-  port: 8082  
+  port: 8082
 
 spring:
   application:
@@ -20,17 +20,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-  
-      
   instance:
-  preferIpAddress: true
-      securePortEnabled: false
-      nonSecurePort: 8080
+    preferIpAddress: true
+    securePortEnabled: false
+    nonSecurePort: 8080
     instance-id: ${spring.application.name}:8082  # Первый инстанс на порту 8082
     prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
 
-instance2:
-  instance-id2: ${spring.application.name}:8083  # Второй инстанс на порту 8083
+instance2:  # Используйте "instance" вместо "instance2" и добавьте настройки для второго инстанса
+  instance-id: ${spring.application.name}:8083  # Второй инстанс на порту 8083
   prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
 
   client:
