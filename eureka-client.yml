@@ -15,11 +15,18 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.application.name}:${8082}  # Первый инстанс на порту 8082
-    instance-id1: ${spring.application.name}:${8083}  # Второй инстанс на порту 8083
     prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+  eureka:
+  instance:
+    instance-id1: ${spring.application.name}:${8083}  # Второй инстанс на порту 8083
+    prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/    
 
 logging:
   level:
