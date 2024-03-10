@@ -6,7 +6,7 @@ eureka:
     nonSecurePort: 8080
 
 server:
-  port: 0  
+  port: 8082  
 
 spring:
   application:
@@ -28,8 +28,8 @@ eureka:
     instance-id: ${spring.application.name}:8082  # Первый инстанс на порту 8082
     prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
 
-instance1:
-  instance-id: ${spring.application.name}:8083  # Второй инстанс на порту 8083
+instance2:
+  instance-id2: ${spring.application.name}:8083  # Второй инстанс на порту 8083
   prefer-ip-address: true  # Используйте IP-адрес вместо имени хоста
 
   client:
