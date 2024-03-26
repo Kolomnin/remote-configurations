@@ -9,6 +9,31 @@ spring:
       ribbon:
         enabled: false
 
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/TestBase
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    liquibase:
+      enabled: true
+      change-log: classpath:db/changelog/changelog-master.yml
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+server:
+  port: 8080
+
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
@@ -17,13 +42,34 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-logging:
-  level:
-    com.netflix.eureka: OFF
-    com.netflix.discovery: OFF
-    org.springframework.web: DEBUG
-  pattern:
-    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
+
+
+# server:
+#   port: 8080
+
+# spring:
+#   application:
+#     name: eureka-client
+#   cloud:
+#     loadbalancer:
+#       ribbon:
+#         enabled: false
+
+# eureka:
+#   instance:
+#     instance-id: ${spring.application.name}:${random.uuid}
+#     port: 55234
+#   client:
+#     service-url:
+#       defaultZone: http://localhost:8761/eureka/
+
+# logging:
+#   level:
+#     com.netflix.eureka: OFF
+#     com.netflix.discovery: OFF
+#     org.springframework.web: DEBUG
+#   pattern:
+#     console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n"
 
 # server:
 #   port: 0
