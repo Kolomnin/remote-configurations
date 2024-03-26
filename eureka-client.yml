@@ -1,8 +1,13 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: eureka-client
-  config:
-    import: optional:configserver:http://localhost:8888
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/TestBase
     username: postgres
@@ -23,9 +28,6 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-
-server:
-  port: 8080
 
 eureka:
   instance:
