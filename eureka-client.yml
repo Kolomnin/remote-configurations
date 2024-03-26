@@ -31,9 +31,6 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
 
-server:
-  port: 8080
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${random.uuid}
